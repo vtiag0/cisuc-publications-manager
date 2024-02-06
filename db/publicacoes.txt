@@ -1,0 +1,25 @@
+Livro A,chave1/chave2/chave3,Um Resumo,2/2/2018,50,editora A,1111111111111,Jorge Henriques/Penousal Machado
+Livro B,chave1/chave2/chave3,Um Resumo,2/2/2018,55,editora B,2222222222222,Jorge Henriques/Penousal Machado
+Livro C,chave1/chave2/chave3,Um Resumo,2/2/2018,100,editora C,3333333333333,Penousal Machado/Licínio Roque
+Livro D,chave1/chave2/chave3,Um Resumo,2/2/2018,200,editora D,4444444444444,Penousal Machado/Paulo Simões
+Livro E,chave1/chave2/chave3,Um Resumo,2/2/2018,1500,editora E,5555555555555,Nuno Lourenço/Henrique Madeira
+Capitulo de Livro A,chave1/chave2/chave3,Um Resumo,2/2/2018,230,editora A,1111111111111,Nome Capitulo,50,100,Nuno Lourenço
+Capitulo de Livro B,chave1/chave2/chave3,Um Resumo,2/2/2018,400,editora B,2222222222222,Nome Capitulo,50,100,Licínio Roque
+Capitulo de Livro C,chave1/chave2/chave3,Um Resumo,2/2/2018,20,editora C,3333333333333,Nome Capitulo,50,100,Licínio Roque
+Capitulo de Livro D,chave1/chave2/chave3,Um Resumo,2/2/2018,55,editora D,4444444444444,Nome Capitulo,50,100,Paulo Simões
+Capitulo de Livro E,chave1/chave2/chave3,Um Resumo,2/2/2018,300,editora E,5555555555555,Nome Capitulo,50,100,Paulo Simões
+Livro de Artigo A,chave1/chave2/chave3,Um Resumo,2/2/2018,230,editora A,1111111111111,Nome Conferencia,15,Henrique Madeira
+Livro de Artigo B,chave1/chave2/chave3,Um Resumo,2/2/2018,100,editora A,1111111111111,Nome Conferencia,15,Henrique Madeira
+Livro de Artigo C,chave1/chave2/chave3,Um Resumo,2/2/2018,45,editora A,1111111111111,Nome Conferencia,15,Peleu Antunes
+Livro de Artigo D,chave1/chave2/chave3,Um Resumo,2/2/2018,30,editora A,1111111111111,Nome Conferencia,15,Peleu Antunes
+Livro de Artigo E,chave1/chave2/chave3,Um Resumo,2/2/2018,231,editora A,1111111111111,Nome Conferencia,15,Maria Tétis
+Artigo Revista A,chave1/chave2/chave3,Um Resumo,2/2/2018,50,Nome Revista,2/3/2010,3,Maria Tétis
+Artigo Revista B,chave1/chave2/chave3,Um Resumo,2/2/2018,300,Nome Revista,2/3/2010,3,Artémis Lua
+Artigo Revista C,chave1/chave2/chave3,Um Resumo,2/2/2018,500,Nome Revista,2/3/2010,3,Artémis Lua
+Artigo Revista D,chave1/chave2/chave3,Um Resumo,2/2/2018,540,Nome Revista,2/3/2010,3,Apolo Sol
+Artigo Revista E,chave1/chave2/chave3,Um Resumo,2/2/2018,51,Nome Revista,2/3/2010,3,Apolo Sol
+Artigo Conferencia A,chave1/chave2/chave3,Um Resumo,2/2/2018,50,Nome Conferencia,2/2/2018,algum lugar,Aquiles Diferenciado/Nuno Lourenço
+Artigo Conferencia B,chave1/chave2/chave3,Um Resumo,2/2/2018,50,Nome Conferencia,2/2/2018,algum lugar,Heitor Troia/Henrique Madeira
+Artigo Conferencia C,chave1/chave2/chave3,Um Resumo,2/2/2018,50,Nome Conferencia,2/2/2018,algum lugar,Bela Helena/Maria Tétis/Henrique Madeira
+Artigo Conferencia D,chave1/chave2/chave3,Um Resumo,2/2/2018,50,Nome Conferencia,2/2/2018,algum lugar,Agamémnon Micenas/Peleu Antunes
+Artigo Conferencia E,chave1/chave2/chave3,Um Resumo,2/2/2018,50,Nome Conferencia,2/2/2018,algum lugar,Alberto Escamandro/Peleu Antunes

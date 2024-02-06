@@ -1,0 +1,24 @@
+Jorge Henriques,jorge@dei.uc.pt,AC,D4.1,999999999
+Penousal Machado,penousal@dei.uc.pt,CMS,D4.2,888888888
+Nuno Lourenço,nuno@dei.uc.pt,ECOS,D4.3,777777777
+Licínio Roque,licinio@dei.uc.pt,IS,D4.4,666666666
+Paulo Simões,paulo@dei.uc.pt,LCT,D4.5,555555555
+Henrique Madeira,henrique@dei.uc.pt,SSE,D4.6,444444444
+Peleu Antunes,peleu@dei.uc.pt,AC,D4.7,3333333333
+Maria Tétis,tetis@dei.uc.pt,ECOS,D4.8,222222222
+Artémis Lua,artimis@dei.uc.pt,IS,D4.9,111111111
+Apolo Sol,apolo@dei.uc.pt,LCT,D4.10,919919919
+Atena Sabedoria,atena@dei.uc.pt,SSE,D4.11,818818818
+Joana Hera,hera@dei.uc.pt,CMS,D4.12,000000000
+João Quíron,quiron@dei.uc.pt,AC,Titulo Tese1,5/3/2021,Jorge Henriques
+Aquiles Diferenciado,aquiles@dei.uc.pt,ECOS,Titulo Tese2,5/3/2021,Nuno Lourenço
+Briseida Maria,briseida@dei.uc.pt,AC,Titulo Tese3,5/3/2021,Jorge Henriques
+Odisseu Ferreira,odisseu@dei.uc.pt,ECOS,Titulo Tese4,5/3/2021,Nuno Lourenço
+Diomedes Correia,diomedes@dei.uc.pt,SSE,Titulo Tese5,5/3/2021,Henrique Madeira
+Heitor Troia,heitor@dei.uc.pt,SSE,Titulo Tese6,5/3/2021,Henrique Madeira
+Páris Arco,paris@dei.uc.pt,LCT,Titulo Tese7,5/3/2021,Apolo Sol
+Bela Helena,helena@dei.uc.pt,ECOS,Titulo Tese8,5/3/2021,Maria Tétis
+Menelau Esparta,menelau@dei.uc.pt,AC,Titulo Tese9,5/3/2021,Peleu Antunes
+Agamémnon Micenas,agamemnon@dei.uc.pt,AC,Titulo Tese10,5/3/2021,Peleu Antunes
+Alberto Escamandro,escamandro@dei.uc.pt,CMS,Titulo Tese11,5/3/2021,Penousal Machado
+Ájax Second,ajax@dei.uc.pt,LCT,Titulo Tese12,5/3/2021,Paulo Simões
