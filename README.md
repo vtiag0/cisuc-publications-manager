@@ -27,3 +27,10 @@ The project is organized as follows:
 ## UML class diagram
 
 ## Run
+
+Run directly in Visual Studio Code by installing this [extension](https://code.visualstudio.com/docs/languages/java) or compile and run with the following commands:
+
+```
+javac -d bin\ src\*.java
+java -cp bin Main
+```
