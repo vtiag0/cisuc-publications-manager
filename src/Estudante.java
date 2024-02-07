@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 
-class Estudante extends Investigador {
+class Estudante extends Investigador implements Serializable {
 
     private String tituloTese;
     private String dataConclusao;
@@ -9,11 +10,15 @@ class Estudante extends Investigador {
 
     public Estudante(String nome, String email, String acronimoGrupo, String tituloTese,
             String dataConclusao, String nomeOrientador) {
-        super(nome, email, acronimoGrupo);
+        super(nome, email, acronimoGrupo, false);
         this.tituloTese = tituloTese;
         this.dataConclusao = dataConclusao;
         this.nomeOrientador = nomeOrientador;
         ++nEstudantes;
+    }
+
+    public short getContagem() {
+        return nEstudantes;
     }
 
 }

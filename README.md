@@ -3,7 +3,7 @@
 This project is a replication of the one developed within the scope of the Object-Oriented Programming (OOP) course during the second year of the bhacelor's degree program in Informatics Engineering at the University of Coimbra. It consists on a simple Java application that manages CISUC research groups, researchers and publications. The assignment requests an application where interaction is done through the command line, with the following features listed below:
 
 - Present the general indicators of CISUC:
-  - [] Total number of members
+  - [x] Total number of members
   - [] Number of members in each category
   - [] Total publications in the last 5 years
   - [] Number of publications of each type
