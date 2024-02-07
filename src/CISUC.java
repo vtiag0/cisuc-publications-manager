@@ -7,5 +7,9 @@ class CISUC {
     private ArrayList<Publicacao> publicacoes;
 
     public CISUC() {
+        grupos = new ArrayList<>();
+        investigadores = new ArrayList<>();
+        publicacoes = new ArrayList<>();
     }
+
 }

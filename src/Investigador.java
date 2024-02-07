@@ -1,13 +1,15 @@
-class Investigador {
+abstract class Investigador {
 
     protected String nome;
     protected String email;
-    protected GrupoInvestigacao grupo;
+    protected String acronimoGrupo;
+    private short nInvestigadores = 0;
 
-    protected Investigador(String nome, String email, GrupoInvestigacao grupo) {
+    protected Investigador(String nome, String email, String acronimoGrupo) {
         this.nome = nome;
         this.email = email;
-        this.grupo = grupo;
+        this.acronimoGrupo = acronimoGrupo;
+        ++nInvestigadores;
     }
 
 }

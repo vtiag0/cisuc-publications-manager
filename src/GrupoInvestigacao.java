@@ -8,12 +8,12 @@ class GrupoInvestigacao {
     private ArrayList<Investigador> investigadores;
     private ArrayList<Publicacao> publicacoes;
 
-    public GrupoInvestigacao(String nome, String acronimo, MembroEfetivo investigadorResponsavel, ArrayList<Investigador> investigadores, ArrayList<Publicacao> publicacoes){
+    public GrupoInvestigacao(String nome, String acronimo, MembroEfetivo investigadorResponsavel) {
         this.nome = nome;
         this.acronimo = acronimo;
         this.investigadorResponsavel = investigadorResponsavel;
-        this.investigadores = investigadores;
-        this.publicacoes = publicacoes; 
+        this.investigadores = new ArrayList<>();
+        this.publicacoes = new ArrayList<>();
     }
-    
+
 }

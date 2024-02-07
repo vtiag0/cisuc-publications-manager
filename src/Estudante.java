@@ -3,15 +3,17 @@ import java.time.LocalDate;
 class Estudante extends Investigador {
 
     private String tituloTese;
-    private LocalDate dataConclusao;
-    private Investigador orientador;
+    private String dataConclusao;
+    private String nomeOrientador;
+    private static short nEstudantes = 0;
 
-    public Estudante(String nome, String email, GrupoInvestigacao grupo, String tituloTese, LocalDate dataConclusao,
-            Investigador orientador) {
-        super(nome, email, grupo);
+    public Estudante(String nome, String email, String acronimoGrupo, String tituloTese,
+            String dataConclusao, String nomeOrientador) {
+        super(nome, email, acronimoGrupo);
         this.tituloTese = tituloTese;
         this.dataConclusao = dataConclusao;
-        this.orientador = orientador;
+        this.nomeOrientador = nomeOrientador;
+        ++nEstudantes;
     }
 
 }
