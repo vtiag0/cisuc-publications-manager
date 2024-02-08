@@ -5,28 +5,26 @@ class ArtigoRevista extends Publicacao implements Serializable {
 
     private String nomeRevista;
     private String data;
-    private static short nArtigosRevista = 0;
 
     public ArtigoRevista(String tipo, String titulo, String palavrasChave, String resumo,
-            String anoPublicacao, int audiencia, String nomeRevista, String data) {
-        super(tipo, titulo, palavrasChave, resumo, anoPublicacao, audiencia);
+            String anoPublicacao, int audiencia, ArrayList<Investigador> autores, String nomeRevista, String data) {
+        super(tipo, titulo, palavrasChave, resumo, anoPublicacao, audiencia, autores);
         this.nomeRevista = nomeRevista;
         this.data = data;
-        ++nArtigosRevista;
     }
 
-    public char fatorImpacto() {
+    public String fatorImpacto() {
         if (audiencia >= 1000) {
-            return 'A';
+            return "A";
         } else if (500 <= audiencia && audiencia < 1000) {
-            return 'B';
+            return "B";
         } else {
-            return 'C';
+            return "C";
         }
     };
 
-    public short getContagem() {
-        return nArtigosRevista;
+    public String toString() {
+        return this.titulo + ", " + this.getAnoPublicacao() + ", " + this.fatorImpacto().toString();
     }
 
 }

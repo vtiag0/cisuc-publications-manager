@@ -7,8 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 class Gestor {
@@ -24,10 +22,12 @@ class Gestor {
     }
 
     public void printMenu() {
-        System.out.println(" --------------- MENU ---------------");
-        System.out.println("| 1 -> Indicadores gerais do CISUC.  |");
-        System.out.println("| 6 -> Sair.                         |");
-        System.out.println(" ------------------------------------");
+        System.out.println(" ------------------ MENU ------------------");
+        System.out.println("| 1 -> Indicadores gerais do CISUC.        |");
+        System.out.println(
+                "| 2 -> Publicações de um grupo de          |\n| investigação, dos últimos 5 anos,        |\n| organizadas por ano, por tipo de         |\n| publicação e por fator de impacto.       |");
+        System.out.println("| 6 -> Sair.                               |");
+        System.out.println(" ------------------------------------------");
     }
 
     public ArrayList<Investigador> leFicheiroTxtInvestigadores() {
@@ -97,7 +97,7 @@ class Gestor {
         return grupos;
     }
 
-    public ArrayList<Publicacao> leFicheiroTxtPublicacoes() {
+    public ArrayList<Publicacao> leFicheiroTxtPublicacoes(CISUC cisuc) {
 
         ArrayList<Publicacao> publicacoes = new ArrayList<>();
         File f = new File(caminhoFicheirosTxt + ficheiroTxtPublicacoes);
@@ -108,32 +108,48 @@ class Gestor {
                 BufferedReader br = new BufferedReader(fr);
                 String line;
                 String[] publicacoesInfo;
+                ArrayList<Investigador> aux;
                 while ((line = br.readLine()) != null) {
                     publicacoesInfo = line.split(",");
+                    aux = new ArrayList<>();
                     if (publicacoesInfo[0].equals("Livro")) {
+                        for (String nome : publicacoesInfo[8].split("/")) {
+                            aux.add(cisuc.getInvestigador(nome));
+                        }
                         publicacoes.add(new Livro(publicacoesInfo[0], publicacoesInfo[1], publicacoesInfo[2],
-                                publicacoesInfo[3], publicacoesInfo[4], Integer.parseInt(publicacoesInfo[5]),
+                                publicacoesInfo[3], publicacoesInfo[4], Integer.parseInt(publicacoesInfo[5]), aux,
                                 publicacoesInfo[6], publicacoesInfo[7]));
                     } else if (publicacoesInfo[0].equals("Capitulo")) {
+                        for (String nome : publicacoesInfo[11].split("/")) {
+                            aux.add(cisuc.getInvestigador(nome));
+                        }
                         publicacoes.add(new LivroCapitulo(publicacoesInfo[0], publicacoesInfo[1], publicacoesInfo[2],
-                                publicacoesInfo[3], publicacoesInfo[4], Integer.parseInt(publicacoesInfo[5]),
+                                publicacoesInfo[3], publicacoesInfo[4], Integer.parseInt(publicacoesInfo[5]), aux,
                                 publicacoesInfo[6],
                                 publicacoesInfo[7], publicacoesInfo[8], Short.parseShort(publicacoesInfo[9]),
                                 Short.parseShort(publicacoesInfo[10])));
                     } else if (publicacoesInfo[0].equals("Livro Artigos")) {
+                        for (String nome : publicacoesInfo[10].split("/")) {
+                            aux.add(cisuc.getInvestigador(nome));
+                        }
                         publicacoes.add(new LivroArtigo(publicacoesInfo[0], publicacoesInfo[1], publicacoesInfo[2],
-                                publicacoesInfo[3], publicacoesInfo[4], Integer.parseInt(publicacoesInfo[5]),
+                                publicacoesInfo[3], publicacoesInfo[4], Integer.parseInt(publicacoesInfo[5]), aux,
                                 publicacoesInfo[6],
                                 publicacoesInfo[7], publicacoesInfo[8], publicacoesInfo[9]));
                     } else if (publicacoesInfo[0].equals("Revista")) {
+                        for (String nome : publicacoesInfo[8].split("/")) {
+                            aux.add(cisuc.getInvestigador(nome));
+                        }
                         publicacoes.add(new ArtigoRevista(publicacoesInfo[0], publicacoesInfo[1], publicacoesInfo[2],
-                                publicacoesInfo[3], publicacoesInfo[4], Integer.parseInt(publicacoesInfo[5]),
-                                publicacoesInfo[6],
-                                publicacoesInfo[7]));
+                                publicacoesInfo[3], publicacoesInfo[4], Integer.parseInt(publicacoesInfo[5]), aux,
+                                publicacoesInfo[6], publicacoesInfo[7]));
                     } else if (publicacoesInfo[0].equals("Artigo")) {
+                        for (String nome : publicacoesInfo[9].split("/")) {
+                            aux.add(cisuc.getInvestigador(nome));
+                        }
                         publicacoes.add(new ArtigoConferencia(publicacoesInfo[0], publicacoesInfo[1],
                                 publicacoesInfo[2], publicacoesInfo[3], publicacoesInfo[4],
-                                Integer.parseInt(publicacoesInfo[5]), publicacoesInfo[6], publicacoesInfo[7],
+                                Integer.parseInt(publicacoesInfo[5]), aux, publicacoesInfo[6], publicacoesInfo[7],
                                 publicacoesInfo[8]));
                     } else {
                         System.out.println("Erro a ler ficheiro de texto das publicacoes.");
@@ -206,14 +222,26 @@ class Gestor {
     public CISUC initApp() {
         CISUC cisuc;
         if (leFicheiroObjCISUC() == null) {
-            ArrayList<Investigador> investigadores = leFicheiroTxtInvestigadores();
-            ArrayList<GrupoInvestigacao> grupos = leFicheiroTxtGupos();
-            ArrayList<Publicacao> publicacoes = leFicheiroTxtPublicacoes();
+            System.out.println("A ler do ficheiro de texto...");
             cisuc = new CISUC();
+            ArrayList<Investigador> investigadores = leFicheiroTxtInvestigadores();
             cisuc.setInvestigadores(investigadores);
+            ArrayList<GrupoInvestigacao> grupos = leFicheiroTxtGupos();
             cisuc.setGrupos(grupos);
+            // Set do investigadores de cada grupo
+            for (int i = 0; i < cisuc.getGrupos().size(); i++) {
+                cisuc.getGrupos().get(i)
+                        .setInvestigadores(cisuc.getInvestigadoresGrupo(cisuc.getGrupos().get(i).getAcronimo()));
+            }
+            ArrayList<Publicacao> publicacoes = leFicheiroTxtPublicacoes(cisuc);
             cisuc.setPublicacoes(publicacoes);
+            // Set das publicacoes de cada grupo
+            for (int i = 0; i < cisuc.getGrupos().size(); i++) {
+                cisuc.getGrupos().get(i)
+                        .setPublicacoes(cisuc.getPublicacoesGrupo(cisuc.getGrupos().get(i).getAcronimo()));
+            }
         } else {
+            System.out.println("A ler do ficheiro de objetos...");
             cisuc = leFicheiroObjCISUC();
         }
         return cisuc;
@@ -221,97 +249,6 @@ class Gestor {
 
     public void closeApp(CISUC cisuc) {
         escreveFicheiroObjCISUC(cisuc);
-    }
-
-    public short nEstudantes(ArrayList<Investigador> investigadores) {
-        short n = 0;
-        for (Investigador inv : investigadores) {
-            if (!inv.getTipo()) {
-                n++;
-            }
-        }
-        return n;
-    }
-
-    public short nMembrosEfetivos(ArrayList<Investigador> investigadores) {
-        short n = 0;
-        for (Investigador inv : investigadores) {
-            if (inv.getTipo()) {
-                n++;
-            }
-        }
-        return n;
-    }
-
-    public short nPublicacoes5Anos(ArrayList<Publicacao> publicacoes) {
-        short n = 0;
-        LocalDate data = LocalDate.now();
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy");
-        String dataFormatada = data.format(myFormatObj);
-        int dataAgora = Integer.parseInt(dataFormatada);
-        int dataPublicacao;
-        try {
-            for (Publicacao pub : publicacoes) {
-                dataPublicacao = Integer.parseInt(pub.getAnoPublicacao().split("/")[2]);
-                if (dataAgora - dataPublicacao >= 5) {
-                    n++;
-                }
-            }
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println("Erro a formatar data.");
-            return -1;
-        }
-        return n;
-    }
-
-    public short nLivros(ArrayList<Publicacao> publicacoes) {
-        short n = 0;
-        for (Publicacao pub : publicacoes) {
-            if (pub.getTipo().equals("Livro")) {
-                n++;
-            }
-        }
-        return n;
-    }
-
-    public short nLivrosCapitulo(ArrayList<Publicacao> publicacoes) {
-        short n = 0;
-        for (Publicacao pub : publicacoes) {
-            if (pub.getTipo().equals("Capitulo")) {
-                n++;
-            }
-        }
-        return n;
-    }
-
-    public short nLivroArtigo(ArrayList<Publicacao> publicacoes) {
-        short n = 0;
-        for (Publicacao pub : publicacoes) {
-            if (pub.getTipo().equals("Livro Artigos")) {
-                n++;
-            }
-        }
-        return n;
-    }
-
-    public short nArtigosRevista(ArrayList<Publicacao> publicacoes) {
-        short n = 0;
-        for (Publicacao pub : publicacoes) {
-            if (pub.getTipo().equals("Revista")) {
-                n++;
-            }
-        }
-        return n;
-    }
-
-    public short nArtigosConferencia(ArrayList<Publicacao> publicacoes) {
-        short n = 0;
-        for (Publicacao pub : publicacoes) {
-            if (pub.getTipo().equals("Artigo")) {
-                n++;
-            }
-        }
-        return n;
     }
 
 }

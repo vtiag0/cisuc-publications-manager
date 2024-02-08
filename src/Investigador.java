@@ -17,7 +17,19 @@ abstract class Investigador implements Serializable {
 
     public abstract short getContagem();
 
+    public String getNome() {
+        return this.nome;
+    }
+
     public boolean getTipo() {
         return this.tipo;
+    }
+
+    public String getAcronimoGrupo() {
+        return this.acronimoGrupo;
+    }
+
+    public String toString() {
+        return this.nome;
     }
 }

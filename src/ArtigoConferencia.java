@@ -6,30 +6,28 @@ class ArtigoConferencia extends Publicacao implements Serializable {
     private String nomeConferencia;
     private String data;
     private String local;
-    private static short nArtigosConferencia = 0;
 
     public ArtigoConferencia(String tipo, String titulo, String palavrasChave, String resumo,
-            String anoPublicacao, int audiencia, String nomeConferencia, String data,
+            String anoPublicacao, int audiencia, ArrayList<Investigador> autores, String nomeConferencia, String data,
             String local) {
-        super(tipo, titulo, palavrasChave, resumo, anoPublicacao, audiencia);
+        super(tipo, titulo, palavrasChave, resumo, anoPublicacao, audiencia, autores);
         this.nomeConferencia = nomeConferencia;
         this.data = data;
         this.local = local;
-        ++nArtigosConferencia;
     }
 
-    public char fatorImpacto() {
+    public String fatorImpacto() {
         if (audiencia >= 500) {
-            return 'A';
+            return "A";
         } else if (200 <= audiencia && audiencia < 500) {
-            return 'B';
+            return "B";
         } else {
-            return 'C';
+            return "C";
         }
     };
 
-    public short getContagem() {
-        return nArtigosConferencia;
-    };
+    public String toString() {
+        return this.titulo + ", " + this.getAnoPublicacao() + ", " + this.fatorImpacto().toString();
+    }
 
 }

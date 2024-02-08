@@ -17,4 +17,28 @@ class GrupoInvestigacao implements Serializable {
         this.publicacoes = new ArrayList<>();
     }
 
+    public String getAcronimo() {
+        return this.acronimo;
+    }
+
+    public ArrayList<Publicacao> getPublicacoes() {
+        return this.publicacoes;
+    }
+
+    public void setInvestigadores(ArrayList<Investigador> investigadores) {
+        this.investigadores = investigadores;
+    }
+
+    public void setPublicacoes(ArrayList<Publicacao> publicacoes) {
+        this.publicacoes = publicacoes;
+    }
+
+    public ArrayList<Investigador> getInvestigadores() {
+        return this.investigadores;
+    }
+
+    public String toString() {
+        return this.acronimo + " " + this.investigadores.toString() + " " + this.publicacoes.toString();
+    }
+
 }

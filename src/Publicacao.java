@@ -4,16 +4,15 @@ import java.util.ArrayList;
 abstract class Publicacao implements Serializable {
 
     protected String tipo;
-    protected ArrayList<Investigador> autores;
     protected String titulo;
     protected String palavrasChave;
     protected String resumo;
     protected String anoPublicacao;
     protected int audiencia;
-    private static short nPublicacoes = 0;
+    protected ArrayList<Investigador> autores;
 
     protected Publicacao(String tipo, String titulo, String palavrasChave, String resumo,
-            String anoPublicacao, int audiencia) {
+            String anoPublicacao, int audiencia, ArrayList<Investigador> autores) {
         this.tipo = tipo;
         this.autores = new ArrayList<>();
         this.titulo = titulo;
@@ -21,10 +20,14 @@ abstract class Publicacao implements Serializable {
         this.resumo = resumo;
         this.anoPublicacao = anoPublicacao;
         this.audiencia = audiencia;
-        ++nPublicacoes;
+        this.autores = autores;
     }
 
-    public abstract char fatorImpacto();
+    public abstract String fatorImpacto();
+
+    public String getTitulo() {
+        return this.titulo;
+    }
 
     public String getAnoPublicacao() {
         return this.anoPublicacao;
@@ -34,7 +37,17 @@ abstract class Publicacao implements Serializable {
         return this.tipo;
     }
 
+    public int getAudiencia() {
+        return this.audiencia;
+    }
+
+    public ArrayList<Investigador> getAutores() {
+        return this.autores;
+    }
+
     public void addAutor(Investigador investigador) {
         this.autores.add(investigador);
     }
+
+    public abstract String toString();
 }
