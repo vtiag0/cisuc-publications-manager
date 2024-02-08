@@ -9,15 +9,15 @@ public class Main {
             cisuc = gestor.initApp();
             Scanner sc = new Scanner(System.in);
             Scanner in = new Scanner(System.in);
-            int menu = 0;
+            String menu = "";
             String aux;
-            while (menu != 6) {
+            while (!menu.equals("6")) {
                 gestor.printMenu();
                 System.out.print("Opcao: ");
-                menu = sc.nextInt();
+                menu = sc.nextLine();
                 System.out.println();
                 switch (menu) {
-                    case 1:
+                    case "1":
                         System.out.println("> Indicadores Gerais do CISUC <");
                         System.out.println("Total de membros: " + cisuc.getInvestigadores().size());
                         System.out.println("Total de membros efetivos: " + cisuc.nMembrosEfetivos());
@@ -31,7 +31,7 @@ public class Main {
                                 .println("Total artigos de conferencias publicados: " + cisuc.nPublicaoTipo("Artigo"));
                         System.out.println();
                         break;
-                    case 2:
+                    case "2":
                         System.out.print("Grupo (Acronimo): ");
                         aux = in.nextLine();
                         System.out.println("> Grupo " + aux + " <");
@@ -44,7 +44,7 @@ public class Main {
                         }
                         System.out.println();
                         break;
-                    case 3:
+                    case "3":
                         try {
                             System.out.print("Grupo (Acronimo): ");
                             aux = in.nextLine();
@@ -61,7 +61,7 @@ public class Main {
                             System.out.println("Nome de grupo invalido.");
                         }
                         break;
-                    case 4:
+                    case "4":
                         try {
                             System.out.print("Nome do Investigador: ");
                             aux = in.nextLine();
@@ -74,7 +74,7 @@ public class Main {
                             System.out.println("Nome de investigador invalido.");
                         }
                         break;
-                    case 5:
+                    case "5":
                         try {
                             for (GrupoInvestigacao grupo : cisuc.getGrupos()) {
                                 aux = grupo.getAcronimo();
@@ -102,7 +102,7 @@ public class Main {
                             System.out.println("Nome de investigador invalido.");
                         }
                         break;
-                    case 6:
+                    case "6":
                         gestor.closeApp(cisuc);
                         sc.close();
                         in.close();
