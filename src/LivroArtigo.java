@@ -1,7 +1,6 @@
-import java.io.Serializable;
 import java.util.ArrayList;
 
-class LivroArtigo extends Livro implements Serializable {
+class LivroArtigo extends Livro {
 
     private String nomeConferencia;
     private String numeroArtigo;

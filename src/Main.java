@@ -44,6 +44,64 @@ public class Main {
                         }
                         System.out.println();
                         break;
+                    case 3:
+                        try {
+                            System.out.print("Grupo (Acronimo): ");
+                            aux = in.nextLine();
+                            System.out.println("> Grupo " + aux + " <");
+                            ArrayList<Investigador> efetivos = cisuc.getEfetivosFromGrupo(aux);
+                            ArrayList<Investigador> estudantes = cisuc.getEstudantesFromGrupo(aux);
+                            for (Investigador efetivo : efetivos) {
+                                System.out.println(efetivo);
+                            }
+                            for (Investigador estudante : estudantes) {
+                                System.out.println(estudante);
+                            }
+                        } catch (Exception ex) {
+                            System.out.println("Nome de grupo invalido.");
+                        }
+                        break;
+                    case 4:
+                        try {
+                            System.out.print("Nome do Investigador: ");
+                            aux = in.nextLine();
+                            System.out.println("> Investigador " + aux + " <");
+                            for (Publicacao pub : cisuc
+                                    .organizaPublicacoes(cisuc.getInvestigador(aux).getPublicacoes())) {
+                                System.out.println(pub);
+                            }
+                        } catch (Exception ex) {
+                            System.out.println("Nome de investigador invalido.");
+                        }
+                        break;
+                    case 5:
+                        try {
+                            for (GrupoInvestigacao grupo : cisuc.getGrupos()) {
+                                aux = grupo.getAcronimo();
+                                System.out.println("> Grupo " + aux + " <");
+                                System.out.println("Total membros: " + cisuc.getGrupo(aux).getInvestigadores().size());
+                                System.out.println("Total efetivos: " + cisuc.getEfetivosFromGrupo(aux).size());
+                                System.out.println("Total estudantes: " + cisuc.getEstudantesFromGrupo(aux).size());
+                                System.out.println(
+                                        "Publicacoes ultimos 5 anos: " + cisuc.getPublicacoesGrupo5Anos(aux).size());
+                                System.out.println("Total artigos de conferencia: "
+                                        + cisuc.nArtigosConferencias(cisuc.getPublicacoesGrupo5Anos(aux)));
+                                System.out.println("Total artigos de revista: "
+                                        + cisuc.nArtigosRevista(cisuc.getPublicacoesGrupo5Anos(aux)));
+                                System.out
+                                        .println("Total livros: " + cisuc.nLivro(cisuc.getPublicacoesGrupo5Anos(aux)));
+                                System.out.println(
+                                        "Total capitulos: "
+                                                + cisuc.nLivroCapitulos(cisuc.getPublicacoesGrupo5Anos(aux)));
+                                System.out.println(
+                                        "Total livros de artigos: "
+                                                + cisuc.nLivroArtigos(cisuc.getPublicacoesGrupo5Anos(aux)));
+                            }
+                            System.out.println();
+                        } catch (Exception e) {
+                            System.out.println("Nome de investigador invalido.");
+                        }
+                        break;
                     case 6:
                         gestor.closeApp(cisuc);
                         sc.close();

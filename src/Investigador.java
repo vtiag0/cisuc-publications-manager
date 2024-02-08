@@ -7,15 +7,15 @@ abstract class Investigador implements Serializable {
     protected String email;
     protected String acronimoGrupo;
     protected boolean tipo;
+    ArrayList<Publicacao> publicacoes;
 
     protected Investigador(String nome, String email, String acronimoGrupo, boolean tipo) {
         this.nome = nome;
         this.email = email;
         this.acronimoGrupo = acronimoGrupo;
         this.tipo = tipo;
+        this.publicacoes = new ArrayList<>();
     }
-
-    public abstract short getContagem();
 
     public String getNome() {
         return this.nome;
@@ -29,7 +29,13 @@ abstract class Investigador implements Serializable {
         return this.acronimoGrupo;
     }
 
-    public String toString() {
-        return this.nome;
+    public ArrayList<Publicacao> getPublicacoes() {
+        return this.publicacoes;
     }
+
+    public void setPublicacoes(ArrayList<Publicacao> publicacoes) {
+        this.publicacoes = publicacoes;
+    }
+
+    public abstract String toString();
 }

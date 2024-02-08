@@ -175,7 +175,7 @@ class CISUC implements Serializable {
         int dataPublicacao;
         for (int i = 0; i < grupo.getPublicacoes().size(); i++) {
             dataPublicacao = Integer.parseInt(grupo.getPublicacoes().get(i).getAnoPublicacao().split("/")[2]);
-            if (dataAgora - dataPublicacao >= 5) {
+            if (dataAgora - dataPublicacao <= 5) {
                 publicacoes.add(grupo.getPublicacoes().get(i));
             }
         }
@@ -191,6 +191,97 @@ class CISUC implements Serializable {
             }
         }
         return investigadores;
+    }
+
+    public ArrayList<Investigador> getEstudantesFromGrupo(String acronimo) {
+        ArrayList<Investigador> estudantes = new ArrayList<>();
+        GrupoInvestigacao grupo = getGrupo(acronimo);
+        for (Investigador inv : grupo.getInvestigadores()) {
+            if (!inv.getTipo()) {
+                estudantes.add(inv);
+            }
+        }
+        return estudantes;
+    }
+
+    public ArrayList<Investigador> getEfetivosFromGrupo(String acronimo) {
+        ArrayList<Investigador> membrosEfetivos = new ArrayList<>();
+        GrupoInvestigacao grupo = getGrupo(acronimo);
+        for (Investigador inv : grupo.getInvestigadores()) {
+            if (inv.getTipo()) {
+                membrosEfetivos.add(inv);
+            }
+        }
+        return membrosEfetivos;
+    }
+
+    public boolean isInvestigadorInArray(String nome, ArrayList<Investigador> investigadores) {
+        for (Investigador inv : investigadores) {
+            if (nome.equals(inv.getNome())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<Publicacao> getPublicacoesInvestigador(String nome) {
+        ArrayList<Publicacao> publicacoes = new ArrayList<>();
+        for (Publicacao pub : this.publicacoes) {
+            if (isInvestigadorInArray(nome, pub.getAutores())) {
+                publicacoes.add(pub);
+            }
+        }
+        return publicacoes;
+    }
+
+    public int nArtigosConferencias(ArrayList<Publicacao> publicacoes) {
+        int n = 0;
+        for (Publicacao pub : publicacoes) {
+            if (pub.getTipo().equals("Artigo")) {
+                ++n;
+            }
+        }
+        return n;
+    }
+
+    public int nArtigosRevista(ArrayList<Publicacao> publicacoes) {
+        int n = 0;
+        for (Publicacao pub : publicacoes) {
+            if (pub.getTipo().equals("Revista")) {
+                ++n;
+            }
+        }
+        return n;
+    }
+
+    public int nLivro(ArrayList<Publicacao> publicacoes) {
+        int n = 0;
+        for (Publicacao pub : publicacoes) {
+            if (pub.getTipo().equals("Livro")) {
+                ++n;
+            }
+        }
+        return n;
+    }
+
+    public int nLivroArtigos(ArrayList<Publicacao> publicacoes) {
+        int n = 0;
+        for (Publicacao pub : publicacoes) {
+            if (pub.getTipo().equals("Livro Artigos")) {
+                ++n;
+            }
+        }
+        return n;
+    }
+
+    public int nLivroCapitulos(ArrayList<Publicacao> publicacoes) {
+        int n = 0;
+        for (Publicacao pub : publicacoes) {
+            if (pub.getTipo().equals("Capitulo")) {
+                ++n;
+            }
+        }
+        return n;
     }
 
 }

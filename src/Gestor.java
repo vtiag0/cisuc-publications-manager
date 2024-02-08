@@ -26,6 +26,11 @@ class Gestor {
         System.out.println("| 1 -> Indicadores gerais do CISUC.        |");
         System.out.println(
                 "| 2 -> Publicações de um grupo de          |\n| investigação, dos últimos 5 anos,        |\n| organizadas por ano, por tipo de         |\n| publicação e por fator de impacto.       |");
+        System.out
+                .println("| 3 -> Listar os membros de um grupo de    |\n| investigação agrupados por categoria.    |");
+        System.out.println(
+                "| 4 -> Listar as publicações de um         |\n| investigador agrupadas por ano, tipo de  |\n| publicação e fator de impacto.           |");
+        System.out.println("| 5 -> Indicadores gerais de um grupo.     |");
         System.out.println("| 6 -> Sair.                               |");
         System.out.println(" ------------------------------------------");
     }
@@ -239,6 +244,11 @@ class Gestor {
             for (int i = 0; i < cisuc.getGrupos().size(); i++) {
                 cisuc.getGrupos().get(i)
                         .setPublicacoes(cisuc.getPublicacoesGrupo(cisuc.getGrupos().get(i).getAcronimo()));
+            }
+            // Set publicacoes de cada investigador
+            for (int i = 0; i < cisuc.getInvestigadores().size(); i++) {
+                cisuc.getInvestigadores().get(i)
+                        .setPublicacoes(cisuc.getPublicacoesInvestigador(cisuc.getInvestigadores().get(i).getNome()));
             }
         } else {
             System.out.println("A ler do ficheiro de objetos...");

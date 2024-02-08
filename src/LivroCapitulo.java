@@ -1,8 +1,6 @@
-import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
-class LivroCapitulo extends Livro implements Serializable {
+class LivroCapitulo extends Livro {
 
     private String nomeCapitulo;
     private short paginaInicio;
