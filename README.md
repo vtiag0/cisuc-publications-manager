@@ -8,13 +8,13 @@ This project was developed within the scope of the Object-Oriented Programming (
   - [x] Total publications in the last 5 years
   - [x] Number of publications of each type
 - [x] List the publications of a research group from the last 5 years, organized by year, publication type, and impact factor.
-- [ ] List the members of a research group grouped by category.
-- [ ] List the publications of a researcher grouped by year, publication type, and impact factor.
+- [x] List the members of a research group grouped by category.
+- [x] List the publications of a researcher grouped by year, publication type, and impact factor.
 - List all research groups and present for each group:
-  - [ ] Total number of members
-  - [ ] Number of members in each category
-  - [ ] Total publications in the last 5 years
-  - [ ] Number of publications from the last 5 years, grouped by year, publication type, and impact factor.
+  - [x] Total number of members
+  - [x] Number of members in each category
+  - [x] Total publications in the last 5 years
+  - [x] Number of publications from the last 5 years, grouped by year, publication type, and impact factor.
 
 ## Project organization
 
@@ -25,6 +25,8 @@ The project is organized as follows:
 - diagrams: UML diagram class picture
 
 ## UML class diagram
+
+![UML Diagram class](/diagrams/classesDiagramUML.png)
 
 ## Run
 
